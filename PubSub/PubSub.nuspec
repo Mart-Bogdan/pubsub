@@ -14,6 +14,7 @@
     </description>
   </metadata>
   <files>
-    <file src="bin\Release\PubSub.dll" target="lib/portable-net45+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+    <file src="bin\Release\PubSub.dll" target="lib/portable-sl5+wp8+wpa81+MonoAndroid1+MonoTouch1" />
+    <file src="..\PubSub-Net4+WinStore\bin\Release\PubSub.dll" target="lib/portable-net40+netcore45+win81" />
   </files>
 </package>

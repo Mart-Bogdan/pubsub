@@ -17,7 +17,6 @@ namespace PubSub
         internal object locker = new object();
         internal List<Handler> handlers = new List<Handler>();
 
-
         public void Publish<T>( object sender, T data = default(T) )
         {
             lock ( this.locker )
@@ -83,7 +82,7 @@ namespace PubSub
         {
             foreach (var h in this.handlers)
             {
-                if (h.Sender.Target.ToString() == obj.ToString() &&
+                if (h.Sender.Target.ToString() == sender.ToString() &&
                     typeof(T) == h.Type)
                 {
                     return true;
