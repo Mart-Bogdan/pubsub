@@ -8,19 +8,11 @@ namespace PubSub
 {
     static public class PubSubExtensions
     {
-        static private readonly Hub hub = new Hub();
+        static private readonly IHub hub = new Hub();
 
         static public bool Exists<T>( this object obj )
         {
-            foreach ( var h in hub.handlers )
-            {
-                if ( h.Sender.Target.ToString() == obj.ToString() &&
-                    typeof(T) == h.Type )
-                {
-                    return true;
-                }
-            }
-            return false;
+            return hub.Exists<T>(obj);
         }
 
         static public void Publish<T>( this object obj )

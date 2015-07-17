@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PubSub
 {
-    internal class Hub
+    internal class Hub : IHub
     {
         internal class Handler
         {
@@ -77,6 +77,19 @@ namespace PubSub
                     this.handlers.Remove( h );
                 }
             }
+        }
+
+        public bool Exists<T>(object sender)
+        {
+            foreach (var h in this.handlers)
+            {
+                if (h.Sender.Target.ToString() == obj.ToString() &&
+                    typeof(T) == h.Type)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 
